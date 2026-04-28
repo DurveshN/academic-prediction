@@ -1,0 +1,58 @@
+Task 5: PostgreSQL Schema and SQLAlchemy Models - Evidence
+===========================================================
+
+Date: 2026-04-28
+
+Files Created/Modified:
+- backend/app/models/user.py
+- backend/app/models/student.py
+- backend/app/models/prediction.py
+- backend/app/models/cohort.py
+- backend/app/models/__init__.py
+- backend/app/db/base.py
+- backend/app/db/session.py
+- backend/app/core/config.py
+- backend/requirements.txt
+- backend/alembic.ini
+- backend/alembic/env.py
+- backend/alembic/versions/44c865fa11c9_initial_migration.py
+- backend/scripts/init_db.py
+
+Schema Verification (pg_dump --schema-only):
+--------------------------------------------
+
+Tables Created:
+- public.alembic_version (Alembic migration tracking)
+- public.cohorts (id, name, created_at)
+- public.students (id, name, cohort_id, demographics JSON, created_at)
+- public.users (id, email, hashed_password, role, created_at)
+- public.predictions (id, student_id, user_id, at_risk_probability, risk_level, explanation_text, text_score, tabular_score, behavioral_score, created_at)
+
+Indexes Created:
+- ix_cohorts_id
+- ix_predictions_id
+- ix_students_id
+- ix_users_email (UNIQUE)
+- ix_users_id
+
+Foreign Keys:
+- predictions.student_id -> students.id
+- predictions.user_id -> users.id
+- students.cohort_id -> cohorts.id
+
+Constraints:
+- cohorts_name_key (UNIQUE)
+- Primary keys on all tables
+
+Seed Data Verification:
+-----------------------
+- cohorts: 2 rows (Fall 2024, Spring 2025)
+- students: 10 rows
+- users: 1 row (admin@example.com)
+- predictions: 0 rows
+
+Alembic Migration:
+------------------
+- Revision: 44c865fa11c9
+- Message: Initial migration
+- Status: Applied successfully
