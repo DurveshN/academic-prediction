@@ -1,0 +1,39 @@
+Task 30 Evidence - EC2 Instance and Docker Deployment
+=====================================================
+
+Date: 2026-04-28
+Status: COMPLETED
+
+Files Created:
+- docs/EC2_DEPLOYMENT.md (370 lines)
+- scripts/deploy.sh (113 lines)
+- scripts/rollback.sh (92 lines)
+
+Verification:
+- EC2_DEPLOYMENT.md contains:
+  * EC2 Launch: Ubuntu 22.04 LTS, t3.medium, 20GB gp3, ec2-sg, IAM role
+  * Elastic IP allocation and association
+  * EC2 Setup: SSH, Docker CE + compose plugin, AWS CLI v2
+  * Deploy: clone/SCP, .env creation, docker-compose.prod.yml up, verification
+  * Post-deployment: external health check, log rotation, Docker auto-start
+  * Rollback: alembic downgrade, Docker image tags, rollback script reference
+  * Useful commands table
+  * Troubleshooting table with OOM warning
+
+- deploy.sh contains:
+  * EC2 check via metadata service
+  * Git pull
+  * Docker compose build and start
+  * Alembic migration
+  * Health check with 30 retries
+  * Colored output
+
+- rollback.sh contains:
+  * Confirmation prompt
+  * Container stop
+  * Alembic downgrade -1
+  * Manual rollback instructions
+  * Colored output
+
+No actual AWS resources were created.
+No credentials hardcoded.

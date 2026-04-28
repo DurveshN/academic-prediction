@@ -1391,7 +1391,7 @@ Wave FINAL (After ALL tasks — Verification):
   - **Happy Path**: User follows doc → RDS created and accessible.
   - **Evidence**: `.sisyphus/evidence/task-29-rds-config.txt` (psql connection output)
 
-- [ ] 30. Create EC2 Instance and Docker Deployment
+- [x] 30. Create EC2 Instance and Docker Deployment
 
   **What to do**:
   - Write `docs/EC2_DEPLOYMENT.md`:
