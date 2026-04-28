@@ -1135,7 +1135,7 @@ Wave FINAL (After ALL tasks — Verification):
   - **Happy Path**: `docker-compose exec backend pytest --cov=app --cov-report=term-missing` → coverage >=60%.
   - **Evidence**: `.sisyphus/evidence/task-22-coverage.txt`
 
-- [ ] 23. Set Up React Query + Zustand State Management
+- [x] 23. Set Up React Query + Zustand State Management
 
   **What to do**:
   - Install `@tanstack/react-query` and `zustand`.

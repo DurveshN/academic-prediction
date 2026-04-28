@@ -1,4 +1,7 @@
+import { useEffect } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
+
+import { useUIStore } from '@/store/uiStore'
 
 type PlaceholderPageProps = {
   title: string
@@ -20,37 +23,46 @@ function PlaceholderPage({ title, description }: PlaceholderPageProps) {
 }
 
 export default function App() {
+  const theme = useUIStore((state) => state.theme)
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme
+    document.documentElement.style.colorScheme = theme
+  }, [theme])
+
   return (
-    <Routes>
-      <Route path="/" element={<Navigate to="/login" replace />} />
-      <Route
-        path="/login"
-        element={
-          <PlaceholderPage
-            title="Login"
-            description="Placeholder login route for the upcoming cookie-based authentication flow."
-          />
-        }
-      />
-      <Route
-        path="/dashboard"
-        element={
-          <PlaceholderPage
-            title="Dashboard"
-            description="Placeholder dashboard route for cohort-level academic performance insights."
-          />
-        }
-      />
-      <Route
-        path="/models"
-        element={
-          <PlaceholderPage
-            title="Models"
-            description="Placeholder models route for model monitoring and prediction summaries."
-          />
-        }
-      />
-      <Route path="*" element={<Navigate to="/login" replace />} />
-    </Routes>
+    <div data-theme={theme} className="min-h-screen">
+      <Routes>
+        <Route path="/" element={<Navigate to="/login" replace />} />
+        <Route
+          path="/login"
+          element={
+            <PlaceholderPage
+              title="Login"
+              description="Placeholder login route for the upcoming cookie-based authentication flow."
+            />
+          }
+        />
+        <Route
+          path="/dashboard"
+          element={
+            <PlaceholderPage
+              title="Dashboard"
+              description="Placeholder dashboard route for cohort-level academic performance insights."
+            />
+          }
+        />
+        <Route
+          path="/models"
+          element={
+            <PlaceholderPage
+              title="Models"
+              description="Placeholder models route for model monitoring and prediction summaries."
+            />
+          }
+        />
+        <Route path="*" element={<Navigate to="/login" replace />} />
+      </Routes>
+    </div>
   )
 }
