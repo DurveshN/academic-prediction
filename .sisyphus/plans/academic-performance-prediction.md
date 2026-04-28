@@ -1100,7 +1100,7 @@ Wave FINAL (After ALL tasks — Verification):
   - **Auth**: `curl /predict` without header → 401.
   - **Evidence**: `.sisyphus/evidence/task-21-errors.json`
 
-- [ ] 22. Write Backend Tests (pytest)
+- [x] 22. Write Backend Tests (pytest)
 
   **What to do**:
   - Achieve >60% coverage for backend:
