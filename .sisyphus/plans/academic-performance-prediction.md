@@ -818,7 +818,7 @@ Wave FINAL (After ALL tasks — Verification):
   - **Missing modality**: `f.predict(0.7, None, 0.6)` → still returns valid probability.
   - **Evidence**: `.sisyphus/evidence/task-14-fusion-metrics.json`
 
-- [ ] 15. Integrate SHAP Explainability and NLG Summarizer
+- [x] 15. Integrate SHAP Explainability and NLG Summarizer
 
   **What to do**:
   - Build `backend/app/explainability/shap_explainer.py`:

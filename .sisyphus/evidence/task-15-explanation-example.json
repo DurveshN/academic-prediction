@@ -1,0 +1,56 @@
+{
+  "task": "task-15-explainability",
+  "sample_explanation": {
+    "risk_level": "medium",
+    "probability": 0.5721634030342102,
+    "top_factors": [
+      {
+        "feature": "internal_exam_score",
+        "shap_value": -1.7867963314056396,
+        "description": "Internal exam score is 1.7 (strong negative factor)"
+      },
+      {
+        "feature": "attendance_rate",
+        "shap_value": 1.5432223081588745,
+        "description": "Attendance is strong at -75% (strong positive factor)"
+      },
+      {
+        "feature": "study_hours_per_week",
+        "shap_value": -0.7916795611381531,
+        "description": "Only studies 0.4 hours per week (strong negative factor)"
+      },
+      {
+        "feature": "avg_assignment_score",
+        "shap_value": 0.7765076756477356,
+        "description": "Assignment scores average -0.8 (strong positive factor)"
+      },
+      {
+        "feature": "extracurricular_count",
+        "shap_value": 0.46219655871391296,
+        "description": "Participates in -1 extracurricular activities (strong positive factor)"
+      },
+      {
+        "feature": "prior_gpa",
+        "shap_value": -0.25180864334106445,
+        "description": "Prior GPA is -0.09 (strong negative factor)"
+      }
+    ],
+    "modality_contributions": "Text analysis suggests negative sentiment. Tabular data shows poor academic indicators. Behavioral data indicates healthy engagement.",
+    "narrative_summary": "This student is at medium risk (probability: 57.2%). Key factors: (1) Internal exam score is 1.7 (strong negative factor) (2) Attendance is strong at -75% (strong positive factor) (3) Only studies ..."
+  },
+  "feature_names": [
+    "attendance_rate",
+    "avg_assignment_score",
+    "assignment_score_std",
+    "internal_exam_score",
+    "study_hours_per_week",
+    "extracurricular_count",
+    "prior_gpa",
+    "gender_F",
+    "gender_M",
+    "gender_NB",
+    "socioeconomic_status_high",
+    "socioeconomic_status_low",
+    "socioeconomic_status_medium"
+  ]
+}
