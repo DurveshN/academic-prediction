@@ -118,11 +118,21 @@ export class ApiError extends Error {
 
 function buildUrl(path: string, query?: ApiRequestOptions['query']) {
   const normalizedPath = path.startsWith('/') ? path : `/${path}`
-  const url = new URL(normalizedPath, API_BASE_URL)
+
+  let fullUrl: string
+  if (API_BASE_URL.startsWith('http')) {
+    fullUrl = new URL(normalizedPath, API_BASE_URL).toString()
+  } else {
+    // Relative base like "/api" — just concatenate
+    const base = API_BASE_URL.endsWith('/') ? API_BASE_URL.slice(0, -1) : API_BASE_URL
+    fullUrl = `${base}${normalizedPath}`
+  }
 
   if (!query) {
-    return url.toString()
+    return fullUrl
   }
+
+  const url = new URL(fullUrl, window.location.origin)
 
   Object.entries(query).forEach(([key, value]) => {
     if (value === undefined || value === null || value === '') {
