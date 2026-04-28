@@ -11,8 +11,9 @@ from app.models.tabular_model import TabularPredictor
 
 logger = logging.getLogger(__name__)
 
-PROJECT_ROOT = Path(__file__).resolve().parents[3]
-DEFAULT_MODEL_PATH = PROJECT_ROOT / "backend" / "models" / "tabular_model_latest.json"
+from app.core.paths import MODELS_DIR
+
+DEFAULT_MODEL_PATH = MODELS_DIR / "tabular_model_latest.json"
 
 FEATURE_NAMES = [
     "attendance_rate",

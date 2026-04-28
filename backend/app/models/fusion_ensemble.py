@@ -20,11 +20,9 @@ from app.models.text_model import TextPredictor
 
 logger = logging.getLogger(__name__)
 
+from app.core.paths import MODELS_DIR, PROCESSED_DATA_DIR, RAW_DATA_DIR, EVIDENCE_DIR
+
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
-RAW_DATA_DIR = PROJECT_ROOT / "data" / "raw"
-PROCESSED_DATA_DIR = PROJECT_ROOT / "data" / "processed"
-MODELS_DIR = PROJECT_ROOT / "backend" / "models"
-EVIDENCE_DIR = PROJECT_ROOT / ".sisyphus" / "evidence"
 
 DEFAULT_STUDENTS_CSV = RAW_DATA_DIR / "students.csv"
 DEFAULT_TEXT_FEATURES_PATH = PROCESSED_DATA_DIR / "text_features.npy"

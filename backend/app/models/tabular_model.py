@@ -23,12 +23,9 @@ import matplotlib.pyplot as plt
 
 logger = logging.getLogger(__name__)
 
+from app.core.paths import MODELS_DIR, PROCESSED_DATA_DIR, RAW_DATA_DIR, EVIDENCE_DIR, DOCS_DIR
+
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
-RAW_DATA_DIR = PROJECT_ROOT / "data" / "raw"
-PROCESSED_DATA_DIR = PROJECT_ROOT / "data" / "processed"
-MODELS_DIR = PROJECT_ROOT / "backend" / "models"
-DOCS_DIR = PROJECT_ROOT / "docs"
-EVIDENCE_DIR = PROJECT_ROOT / ".sisyphus" / "evidence"
 
 DEFAULT_FEATURES_PATH = PROCESSED_DATA_DIR / "tabular_features.npy"
 DEFAULT_STUDENT_IDS_PATH = PROCESSED_DATA_DIR / "tabular_student_ids.npy"

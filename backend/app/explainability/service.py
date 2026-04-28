@@ -8,8 +8,9 @@ import numpy as np
 from app.explainability.nlg_summarizer import summarize
 from app.explainability.shap_explainer import FEATURE_NAMES, TabularShapExplainer
 
-PROJECT_ROOT = Path(__file__).resolve().parents[3]
-DEFAULT_MODEL_PATH = PROJECT_ROOT / "backend" / "models" / "tabular_model_latest.json"
+from app.core.paths import MODELS_DIR
+
+DEFAULT_MODEL_PATH = MODELS_DIR / "tabular_model_latest.json"
 
 
 class ExplainabilityService:
