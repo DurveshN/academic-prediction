@@ -1,0 +1,46 @@
+Task 4: Docker and Docker Compose Setup - Evidence
+=====================================================
+
+Files Created:
+--------------
+1. backend/Dockerfile
+   - Python 3.11 slim base
+   - Multi-stage build (builder + production)
+   - Virtual environment for isolation
+   - Non-root user (appuser, uid 1000)
+   - Health check on /health endpoint
+   - Command: uvicorn app.main:app --host 0.0.0.0 --port 8000
+
+2. frontend/Dockerfile
+   - Node 20 alpine build stage
+   - nginx alpine production stage
+   - Copies built assets from builder
+   - Health check on port 80
+
+3. frontend/nginx.conf
+   - Serves static files from /usr/share/nginx/html
+   - Proxies /api/* to backend:8000
+   - Gzip compression enabled
+   - Cache headers for static assets
+
+4. docker-compose.yml
+   - db: PostgreSQL 15 alpine, port 5432, persistent volume
+   - backend: FastAPI, port 8000, mem_limit: 3g, depends on db
+   - frontend: nginx, port 80, proxies /api to backend
+   - Health checks on all services
+
+5. docker-compose.prod.yml
+   - backend only (no db service - uses external RDS)
+   - Runs alembic upgrade head before starting uvicorn
+   - MLflow artifacts volume mount
+   - mem_limit: 3g
+
+6. .env.example
+   - All required environment variables documented
+   - Database, JWT, MLflow, and Environment settings
+
+Verification Steps:
+-------------------
+Run: docker-compose up --build
+Expected: All services start successfully
+Backend health: http://localhost:8000/health or http://localhost/api/health (via nginx proxy)
