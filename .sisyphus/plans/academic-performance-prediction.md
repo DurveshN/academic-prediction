@@ -1307,7 +1307,7 @@ Wave FINAL (After ALL tasks — Verification):
   - **Happy Path**: Playwright → navigate to `/models` → screenshot.
   - **Evidence**: `.sisyphus/evidence/task-27-model-page.png`
 
-- [ ] 28. Write Frontend Tests (vitest)
+- [x] 28. Write Frontend Tests (vitest)
 
   **What to do**:
   - Add vitest + React Testing Library + jsdom.

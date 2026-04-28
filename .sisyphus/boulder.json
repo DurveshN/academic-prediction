@@ -153,6 +153,15 @@
       "agent": "Sisyphus-Junior",
       "category": "quick",
       "updated_at": "2026-04-28T16:12:15.834Z"
+    },
+    "todo:28": {
+      "task_key": "todo:28",
+      "task_label": "28",
+      "task_title": "Write Frontend Tests (vitest)",
+      "session_id": "ses_22b2142b0ffeHPh6ZM3Nf7YDtU",
+      "agent": "Sisyphus-Junior",
+      "category": "quick",
+      "updated_at": "2026-04-28T16:25:56.554Z"
     }
   }
 }
