@@ -23,11 +23,7 @@ from app.middleware.error_handler import (
 from app.core.logging_config import setup_logging
 from app.middleware.logging_middleware import LoggingMiddleware
 
-import logging
-
 setup_logging()
-
-_logger = logging.getLogger("app.startup")
 
 app = FastAPI(
     title="Academic Performance Prediction System",
@@ -44,26 +40,21 @@ app.add_exception_handler(PredictionError, prediction_error_handler)  # type: ig
 app.add_exception_handler(AuthenticationError, authentication_error_handler)  # type: ignore[arg-type]
 app.add_exception_handler(Exception, generic_exception_handler)  # type: ignore[arg-type]
 
+app.add_middleware(LoggingMiddleware)
+
 _cors_origins = [
     o.strip()
     for o in settings.FRONTEND_URL.split(",")
     if o.strip()
 ]
 
-# CORS must be the outermost middleware (added last = runs first).
-# LoggingMiddleware is added after CORS so it runs inside the CORS layer,
-# ensuring CORS headers are always present on every response.
 app.add_middleware(
     CORSMiddleware,
     allow_origins=_cors_origins,
     allow_credentials=True,
-    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allow_methods=["GET", "POST", "PUT", "DELETE"],
     allow_headers=["*"],
 )
-
-app.add_middleware(LoggingMiddleware)
-
-_logger.info("CORS allowed origins: %s", _cors_origins)
 
 app.include_router(auth_router, prefix="/auth", tags=["auth"])
 app.include_router(predictions_router)
