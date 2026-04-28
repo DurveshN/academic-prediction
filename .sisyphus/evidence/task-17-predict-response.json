@@ -1,0 +1,45 @@
+{
+  "student_id": 1,
+  "at_risk_probability": 0.044,
+  "risk_level": "low",
+  "explanation": {
+    "risk_level": "low",
+    "probability": 0.009034774266183376,
+    "top_factors": [
+      {
+        "feature": "avg_assignment_score",
+        "shap_value": -1.6408073902130127,
+        "description": "Assignment scores average 0.0 (strong negative factor)"
+      },
+      {
+        "feature": "prior_gpa",
+        "shap_value": -0.9633975625038147,
+        "description": "Prior GPA is 0.89 (strong negative factor)"
+      },
+      {
+        "feature": "attendance_rate",
+        "shap_value": -0.962777316570282,
+        "description": "Attendance is only 24% (strong negative factor)"
+      },
+      {
+        "feature": "extracurricular_count",
+        "shap_value": 0.318048894405365,
+        "description": "Participates in -1 extracurricular activities (strong positive factor)"
+      },
+      {
+        "feature": "socioeconomic_status_low",
+        "shap_value": 0.08475857973098755,
+        "description": "Low socioeconomic background (moderate positive factor)"
+      },
+      {
+        "feature": "gender_NB",
+        "shap_value": 0.01930418238043785,
+        "description": "Non-binary student (slight positive factor)"
+      }
+    ],
+    "modality_contributions": "Text analysis suggests negative sentiment. Tabular data shows good academic indicators. Behavioral data indicates low engagement.",
+    "narrative_summary": "This student is at low risk (probability: 0.9%). Key factors: (1) Assignment scores average 0.0 (strong negative factor) (2) Prior GPA is 0.89 (strong negative factor) (3) Attendance is only 24% (s..."
+  },
+  "model_version": "fusion-xgboost-v1",
+  "prediction_id": "pred-1-0d471270"
+}

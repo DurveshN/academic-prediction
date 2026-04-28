@@ -1,0 +1,2 @@
+Inference latency: 304.48 ms
+Status: PASS (threshold: 2000 ms)

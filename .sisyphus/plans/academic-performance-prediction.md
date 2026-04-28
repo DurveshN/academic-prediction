@@ -924,7 +924,7 @@ Wave FINAL (After ALL tasks — Verification):
   - **Happy Path**: `curl http://localhost:8000/stub/cohort/1` → JSON with students array.
   - **Evidence**: `.sisyphus/evidence/task-16-5-stub-api.json`
 
-- [ ] 17. Build Prediction Endpoint (`POST /predict`)
+- [x] 17. Build Prediction Endpoint (`POST /predict`)
 
   **What to do**:
   - Create `backend/app/api/predictions.py`:

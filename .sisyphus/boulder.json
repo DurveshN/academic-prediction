@@ -99,6 +99,24 @@
       "agent": "Sisyphus-Junior",
       "category": "unspecified-low",
       "updated_at": "2026-04-28T13:12:52.482Z"
+    },
+    "todo:15": {
+      "task_key": "todo:15",
+      "task_label": "15",
+      "task_title": "Integrate SHAP Explainability and NLG Summarizer",
+      "session_id": "ses_22ba4c8d5ffeHURsRIcaMra3U3",
+      "agent": "Sisyphus-Junior",
+      "category": "deep",
+      "updated_at": "2026-04-28T13:58:59.605Z"
+    },
+    "todo:17": {
+      "task_key": "todo:17",
+      "task_label": "17",
+      "task_title": "Build Prediction Endpoint (`POST /predict`)",
+      "session_id": "ses_22b943d03ffeHzXO99pDv5ZipL",
+      "agent": "Sisyphus-Junior",
+      "category": "unspecified-high",
+      "updated_at": "2026-04-28T14:30:21.481Z"
     }
   }
 }
