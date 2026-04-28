@@ -1,0 +1,14 @@
+Task 7: Synthetic Dataset Generation
+========================================
+
+Students:     1000 rows
+Texts:        12450 rows
+Behavioral:   226890 rows
+
+Split sizes:
+  train:  700 students (28.9% at-risk)
+  val  :  150 students (32.7% at-risk)
+  test :  150 students (32.7% at-risk)
+
+At-risk distribution: 30.0%
+Total raw size: 23.16 MB
