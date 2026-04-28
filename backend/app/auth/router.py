@@ -33,7 +33,7 @@ async def login(
 
     access_token = create_access_token(data={"sub": str(user.id)})
 
-    secure = settings.ENVIRONMENT != "local"
+    secure = settings.ENVIRONMENT == "production" and settings.FRONTEND_URL.startswith("https")
     response.set_cookie(
         key="access_token",
         value=access_token,
