@@ -664,7 +664,7 @@ Wave FINAL (After ALL tasks — Verification):
   - **Happy Path**: `python -c "import numpy as np; f=np.load('data/processed/tabular_features.npy'); print(f.shape); print(np.isnan(f).sum())"` → no NaNs.
   - **Evidence**: `.sisyphus/evidence/task-10-tabular-features.txt`
 
-- [ ] 11. Train Tabular Model (XGBoost)
+- [x] 11. Train Tabular Model (XGBoost)
 
   **What to do**:
   - Build `backend/app/models/tabular_model.py`:
@@ -742,7 +742,7 @@ Wave FINAL (After ALL tasks — Verification):
   - **Happy Path**: `python -c "import numpy as np; s=np.load('data/processed/behavioral_sequences.npy'); print(s.shape)"` → (N, 30, 6).
   - **Evidence**: `.sisyphus/evidence/task-12-behavioral-sequences.txt`
 
-- [ ] 13. Train Behavioral Model (LSTM)
+- [x] 13. Train Behavioral Model (LSTM)
 
   **What to do**:
   - Build `backend/app/models/behavioral_model.py`:

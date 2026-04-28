@@ -90,6 +90,15 @@
       "agent": "Sisyphus-Junior",
       "category": "unspecified-low",
       "updated_at": "2026-04-28T13:00:15.522Z"
+    },
+    "todo:11": {
+      "task_key": "todo:11",
+      "task_label": "11",
+      "task_title": "Train Tabular Model (XGBoost)",
+      "session_id": "ses_22bd0f988ffeXFut7FDzO1SEnt",
+      "agent": "Sisyphus-Junior",
+      "category": "unspecified-low",
+      "updated_at": "2026-04-28T13:12:52.482Z"
     }
   }
 }

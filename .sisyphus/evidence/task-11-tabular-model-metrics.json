@@ -1,0 +1,37 @@
+{
+  "model_path": "E:\\tai projects\\ibm\\backend\\models\\tabular_model_20260428_184320.json",
+  "latest_model_path": "E:\\tai projects\\ibm\\backend\\models\\tabular_model_latest.json",
+  "feature_importance_path": "E:\\tai projects\\ibm\\docs\\tabular_feature_importance.png",
+  "training_time_seconds": 1.2125980999990134,
+  "single_inference_ms": 3.228700006729923,
+  "validation_metrics": {
+    "accuracy": 0.89,
+    "precision": 0.8064516129032258,
+    "recall": 0.8333333333333334,
+    "f1": 0.819672131147541,
+    "roc_auc": 0.9614285714285714
+  },
+  "train_metrics": {
+    "accuracy": 0.98875,
+    "precision": 0.963855421686747,
+    "recall": 1.0,
+    "f1": 0.9815950920245399,
+    "roc_auc": 0.9994196428571429
+  },
+  "feature_names": [
+    "attendance_rate",
+    "avg_assignment_score",
+    "assignment_score_std",
+    "internal_exam_score",
+    "study_hours_per_week",
+    "extracurricular_count",
+    "prior_gpa",
+    "gender_F",
+    "gender_M",
+    "gender_NB",
+    "socioeconomic_status_high",
+    "socioeconomic_status_low",
+    "socioeconomic_status_medium"
+  ],
+  "scale_pos_weight": 2.3333333333333335
+}
