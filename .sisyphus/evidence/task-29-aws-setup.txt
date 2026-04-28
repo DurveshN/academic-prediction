@@ -1,0 +1,32 @@
+Task 29 Evidence - AWS Setup Guide and RDS PostgreSQL
+=====================================================
+
+Date: 2026-04-28
+Status: COMPLETED
+
+Files Created:
+- docs/AWS_SETUP.md (280 lines)
+- docs/RDS_SETUP.md (255 lines)
+
+Verification:
+- AWS_SETUP.md contains:
+  * Prerequisites (AWS account, CLI, configure)
+  * IAM user creation (deploy-user with EC2, RDS, S3, VPC policies)
+  * S3 bucket creation with public access blocked
+  * Security groups (ec2-sg: 22/80/443, rds-sg: 5432 from ec2-sg)
+  * RDS PostgreSQL 15 on db.t3.micro with 20GB
+  * Cost estimates table (~$13/month RDS, ~$30/month EC2 t3.medium)
+  * CLI verification commands
+  * No hardcoded credentials
+
+- RDS_SETUP.md contains:
+  * Connection string format (postgresql+asyncpg)
+  * Backend integration code (SQLAlchemy async engine)
+  * Alembic setup and common commands
+  * Backup basics (automated, manual snapshots, restore)
+  * Monitoring (CloudWatch metrics and alarms)
+  * Quick reference table
+  * Troubleshooting table
+
+Both files use placeholder values for credentials.
+No actual AWS resources were created.

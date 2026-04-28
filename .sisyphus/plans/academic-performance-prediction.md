@@ -1340,7 +1340,7 @@ Wave FINAL (After ALL tasks — Verification):
   - **Happy Path**: `npm run test -- --coverage` → passes.
   - **Evidence**: `.sisyphus/evidence/task-28-frontend-coverage.txt`
 
-- [ ] 29. Create AWS Setup Guide and RDS PostgreSQL
+- [x] 29. Create AWS Setup Guide and RDS PostgreSQL
 
   **What to do**:
   - Write `docs/AWS_SETUP.md` with step-by-step instructions:
