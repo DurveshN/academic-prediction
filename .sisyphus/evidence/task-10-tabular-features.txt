@@ -1,0 +1,27 @@
+Task 10: Tabular Preprocessing and Feature Engineering
+
+Execution command:
+- backend venv activated from `backend/venv/Scripts/Activate.ps1`
+- `python -m app.preprocessing.tabular_processor`
+
+Pipeline output:
+- Saved `data/processed/tabular_features.npy`
+- Saved `data/processed/tabular_student_ids.npy`
+- Saved `data/processed/tabular_scaler.pkl`
+- Reported shape: `(1000, 13)`
+
+Artifact inspection:
+- features_shape: (1000, 13)
+- student_ids_shape: (1000,)
+- has_nan: False
+- feature_count: 13
+- scaler_features: 13
+
+Test command:
+- `pytest tests/test_tabular_processor.py`
+
+Test result:
+- 4 passed, 1 warning in 3.79s
+
+Note:
+- `lsp_diagnostics` could not run because the configured `basedpyright-langserver` was unavailable to the LSP tool in this environment, despite `basedpyright` being installed for Python/venv.

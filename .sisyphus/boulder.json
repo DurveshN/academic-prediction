@@ -81,6 +81,15 @@
       "agent": "Sisyphus-Junior",
       "category": "deep",
       "updated_at": "2026-04-28T12:52:12.423Z"
+    },
+    "todo:10": {
+      "task_key": "todo:10",
+      "task_label": "10",
+      "task_title": "Tabular Preprocessing and Feature Engineering",
+      "session_id": "ses_22bd81c39ffeQOAFvEGMgmfXQe",
+      "agent": "Sisyphus-Junior",
+      "category": "unspecified-low",
+      "updated_at": "2026-04-28T13:00:15.522Z"
     }
   }
 }

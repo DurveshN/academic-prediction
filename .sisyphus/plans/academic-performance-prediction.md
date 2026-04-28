@@ -623,7 +623,7 @@ Wave FINAL (After ALL tasks — Verification):
   - **Happy Path**: `python -c "from app.models.text_model import TextPredictor; p=TextPredictor(); print(p.predict('Student is struggling with coursework'))"` → probability between 0 and 1.
   - **Evidence**: `.sisyphus/evidence/task-9-text-model-metrics.json`
 
-- [ ] 10. Tabular Preprocessing and Feature Engineering
+- [x] 10. Tabular Preprocessing and Feature Engineering
 
   **What to do**:
   - Build `backend/app/preprocessing/tabular_processor.py`:
