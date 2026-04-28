@@ -1,0 +1,17 @@
+Task 6: JWT Authentication - Login Headers Evidence
+=====================================================
+
+Test: POST /auth/login with valid credentials
+Status: 200 OK
+
+Set-Cookie Header:
+access_token=<JWT_TOKEN>; HttpOnly; Max-Age=86400; Path=/; SameSite=lax
+
+Response Body:
+{"message":"Login successful"}
+
+Cookie Attributes Verified:
+- HttpOnly: True
+- SameSite: lax
+- Max-Age: 86400 (24 hours)
+- Secure: False (local development environment)

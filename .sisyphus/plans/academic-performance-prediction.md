@@ -408,7 +408,7 @@ Wave FINAL (After ALL tasks — Verification):
   - **Happy Path**: `docker-compose exec db psql -U postgres -c "\dt"` → tables listed.
   - **Evidence**: `.sisyphus/evidence/task-5-schema.txt`
 
-- [ ] 5.5. Create Database Seeding Script
+- [x] 5.5. Create Database Seeding Script
 
   **What to do**:
   - Create `backend/scripts/seed_db.py`:

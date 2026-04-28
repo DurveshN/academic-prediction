@@ -1,0 +1,17 @@
+Task 6: JWT Authentication - Failed Login Evidence
+====================================================
+
+Test: POST /auth/login with invalid credentials
+Status: 401 Unauthorized
+
+Response Body:
+{"detail":"Incorrect email or password"}
+
+Cookie Status:
+- No access_token cookie set
+
+Test: GET /protected without authentication
+Status: 401 Unauthorized
+
+Response Body:
+{"detail":"Not authenticated"}

@@ -1,0 +1,54 @@
+Task 5.5: Database Seeding Script - Evidence Summary
+=====================================================
+
+Date: 2026-04-28
+
+Files Created:
+--------------
+1. backend/scripts/seed_db.py
+   - Reads data/raw/students.csv (synthetic data from Task 7)
+   - Extracts unique cohorts from cohort_id column
+   - Inserts cohorts into `cohorts` table idempotently (checks existence by name)
+   - Inserts students into `students` table idempotently (checks existence by name + cohort_id)
+   - Uses existing SQLAlchemy async session from backend/app/db/session.py
+   - Uses existing models from backend/app/models/
+   - Supports --limit flag (default: 100 students) and --all flag
+   - Refuses to run in production environment (ENVIRONMENT == "production")
+   - Handles missing CSV file gracefully (prints warning)
+   - Accepts optional `session` parameter for testability
+
+2. backend/tests/test_seed.py
+   - test_seed_script_runs_without_errors: Verifies script executes without exceptions
+   - test_seed_creates_cohorts_and_students: Verifies database records are created
+   - test_seed_is_idempotent: Verifies running twice produces same record count
+   - test_seed_respects_limit: Verifies limit parameter controls number of seeded records
+
+Files Modified:
+---------------
+1. docker-compose.yml
+   - Added volume mount for backend/scripts and data directories
+   - Added startup command to run seed script before starting uvicorn
+
+2. backend/Dockerfile
+   - Added COPY instruction for scripts/ directory
+
+Test Results:
+-------------
+All 9 backend tests pass (including 4 new seed tests):
+  tests/test_auth.py::test_login_with_valid_credentials_sets_cookie PASSED
+  tests/test_auth.py::test_login_with_invalid_credentials_returns_401 PASSED
+  tests/test_auth.py::test_access_protected_endpoint_without_cookie_returns_401 PASSED
+  tests/test_auth.py::test_access_protected_endpoint_with_valid_cookie_returns_200 PASSED
+  tests/test_auth.py::test_cookie_has_correct_attributes PASSED
+  tests/test_seed.py::test_seed_script_runs_without_errors PASSED
+  tests/test_seed.py::test_seed_creates_cohorts_and_students PASSED
+  tests/test_seed.py::test_seed_is_idempotent PASSED
+  tests/test_seed.py::test_seed_respects_limit PASSED
+
+Verification:
+-------------
+- Script is idempotent: duplicate runs do not create duplicates
+- Script respects the limit parameter (default 100, configurable via --limit or --all)
+- Script refuses to seed production database
+- Script handles missing CSV gracefully
+- All existing tests continue to pass
