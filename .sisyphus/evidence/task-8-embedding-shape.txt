@@ -1,0 +1,19 @@
+Text Embeddings Verification
+===========================
+
+File: data/processed/text_features.npy
+Shape: (1000, 768)
+Dtype: float32
+Mean: -0.011433947
+Std: 0.27920654
+
+File: data/processed/text_student_ids.npy
+Shape: (1000,)
+
+Verification: python -c "import numpy as np; e=np.load('data/processed/text_features.npy'); print(e.shape)"
+Output: (1000, 768)
+
+Model: distilbert-base-uncased
+Hidden size: 768
+Students processed: 1000
+Inference completed successfully on CPU.

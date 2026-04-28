@@ -85,3 +85,24 @@
 - Tests mock AutoModel and AutoTokenizer to avoid downloading weights during test runs
 - RuntimeError raised with descriptive message if model loading fails
 - get_text_model_config() returns dict with model metadata for debugging/monitoring
+
+
+## Task 8: Text Preprocessing and DistilBERT Embedding Pipeline
+
+### Completed
+- Created backend/app/preprocessing/text_processor.py with full embedding pipeline
+- Created backend/app/preprocessing/__init__.py for module exports
+- Created backend/tests/test_text_processor.py with 12 tests (all passing)
+- Generated text_features.npy (1000 students x 768 dimensions) using distilbert-base-uncased
+- Generated text_student_ids.npy for student alignment
+- Evidence saved to .sisyphus/evidence/task-8-embedding-shape.txt
+
+### Notes
+- MockModel class used in tests to avoid downloading actual model weights
+- MagicMock alone was insufficient for mocking transformer models due to call signature complexity
+- torch.set_num_threads(2) prevents CPU thread explosion during inference
+- Model weights frozen with param.requires_grad = False
+- Pipeline is resumable: checks cache before recomputing embeddings
+- Uses get_text_encoder() from app.core.model_config for model selection
+- Inference on 1000 students completed successfully on CPU
+

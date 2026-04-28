@@ -544,7 +544,7 @@ Wave FINAL (After ALL tasks — Verification):
   - **Happy Path**: `python -c "from app.core.model_config import get_text_encoder; m,t=get_text_encoder(); print(m.config.hidden_size)"` → prints 768.
   - **Evidence**: `.sisyphus/evidence/task-7-5-model-config.txt`
 
-- [ ] 8. Text Preprocessing and DistilBERT Embedding Pipeline
+- [x] 8. Text Preprocessing and DistilBERT Embedding Pipeline
 
   **What to do**:
   - Build `backend/app/preprocessing/text_processor.py`:
