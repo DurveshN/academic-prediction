@@ -1,5 +1,6 @@
 from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.exceptions import RequestValidationError
 from slowapi import _rate_limit_exceeded_handler
 from slowapi.errors import RateLimitExceeded
 
@@ -10,6 +11,16 @@ from app.api import register_stubs
 from app.api.predictions import router as predictions_router, limiter
 from app.api.cohorts import router as cohorts_router
 from app.api.health import router as health_router
+from app.core.config import settings
+from app.core.errors import AuthenticationError, ModelNotFoundError, PredictionError
+from app.middleware.error_handler import (
+    validation_exception_handler,
+    model_not_found_handler,
+    prediction_error_handler,
+    authentication_error_handler,
+    generic_exception_handler,
+)
+from app.middleware.logging_middleware import LoggingMiddleware
 
 app = FastAPI(
     title="Academic Performance Prediction System",
@@ -20,11 +31,19 @@ app = FastAPI(
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)  # type: ignore[arg-type]
 
+app.add_exception_handler(RequestValidationError, validation_exception_handler)  # type: ignore[arg-type]
+app.add_exception_handler(ModelNotFoundError, model_not_found_handler)  # type: ignore[arg-type]
+app.add_exception_handler(PredictionError, prediction_error_handler)  # type: ignore[arg-type]
+app.add_exception_handler(AuthenticationError, authentication_error_handler)  # type: ignore[arg-type]
+app.add_exception_handler(Exception, generic_exception_handler)  # type: ignore[arg-type]
+
+app.add_middleware(LoggingMiddleware)
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=[settings.FRONTEND_URL],
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST", "PUT", "DELETE"],
     allow_headers=["*"],
 )
 

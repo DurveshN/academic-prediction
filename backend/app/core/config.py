@@ -10,6 +10,7 @@ class Settings(BaseSettings):
     MLFLOW_TRACKING_URI: str = Field(default="sqlite:///backend/mlflow.db")
     MLFLOW_ARTIFACT_ROOT: str = Field(default="backend/mlruns")
     ENVIRONMENT: str = Field(default="local")
+    FRONTEND_URL: str = Field(default="http://localhost:3000")
     TEXT_MODEL: str = Field(default="distilbert-base-uncased")
     USE_MINILM_FALLBACK: bool = Field(default=False)
 

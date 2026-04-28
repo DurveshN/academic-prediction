@@ -1062,7 +1062,7 @@ Wave FINAL (After ALL tasks — Verification):
   - **Happy Path**: Time two identical predictions → second is faster.
   - **Evidence**: `.sisyphus/evidence/task-20-cache-latency.txt`
 
-- [ ] 21. Add Input Validation and Error Handling
+- [x] 21. Add Input Validation and Error Handling
 
   **What to do**:
   - Add global exception handler in FastAPI:

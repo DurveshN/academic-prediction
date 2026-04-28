@@ -1,0 +1,62 @@
+{
+  "task": "Add Input Validation and Error Handling",
+  "tests_passed": 10,
+  "full_suite_passed": 133,
+  "sample_responses": {
+    "validation_error_400": {
+      "status_code": 400,
+      "detail": "Validation error",
+      "errors": [
+        {
+          "field": "body.student_id",
+          "message": "Input should be a valid integer, unable to parse string as an integer",
+          "type": "int_parsing"
+        }
+      ]
+    },
+    "model_not_found_404": {
+      "status_code": 404,
+      "detail": "Student not found"
+    },
+    "authentication_error_401": {
+      "status_code": 401,
+      "detail": "Invalid credentials",
+      "headers": {
+        "www-authenticate": "Bearer"
+      }
+    },
+    "prediction_error_500": {
+      "status_code": 500,
+      "detail": "An error occurred while processing the prediction. Please try again later."
+    },
+    "generic_error_local_500": {
+      "status_code": 500,
+      "detail": "Internal server error",
+      "error": "Something broke"
+    },
+    "generic_error_production_500": {
+      "status_code": 500,
+      "detail": "Internal server error"
+    },
+    "cors_preflight_frontend": {
+      "status_code": 200,
+      "access_control_allow_origin": "http://localhost:3000"
+    },
+    "cors_rejected_origin": {
+      "status_code": 400
+    }
+  },
+  "files_created": [
+    "backend/app/core/errors.py",
+    "backend/app/middleware/error_handler.py",
+    "backend/app/middleware/logging_middleware.py",
+    "backend/app/core/sanitization.py",
+    "backend/tests/test_errors.py",
+    ".sisyphus/evidence/task-21-errors.json"
+  ],
+  "files_modified": [
+    "backend/app/core/config.py",
+    "backend/app/main.py",
+    "backend/app/auth/router.py"
+  ]
+}
