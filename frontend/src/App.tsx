@@ -19,7 +19,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/dashboard" element={<CohortDashboard />} />
+        <Route path="/dashboard" element={<Navigate to="/cohorts/1" replace />} />
+        <Route path="/cohorts/:id" element={<CohortDashboard />} />
         <Route path="/models" element={<ModelPerformancePage />} />
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
