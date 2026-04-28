@@ -432,7 +432,7 @@ export default function CohortDashboard({ cohortId }: CohortDashboardProps) {
   }, [cohortQuery.data])
 
   const errorMessage =
-    cohortQuery.error instanceof ApiError || cohortQuery.error instanceof Error
+    cohortQuery.error != null && (cohortQuery.error instanceof ApiError || cohortQuery.error instanceof Error)
       ? cohortQuery.error.message
       : 'An unexpected error occurred while loading the cohort overview.'
 
@@ -461,7 +461,7 @@ export default function CohortDashboard({ cohortId }: CohortDashboardProps) {
 
   const handleOrderToggle = () => {
     setPage(1)
-    setOrder((currentOrder) => (currentOrder === 'asc' ? 'desc' : 'asc'))
+    setOrder((currentOrder: SortOrder) => (currentOrder === 'asc' ? 'desc' : 'asc'))
   }
 
   const handleRiskFilterChange = (nextRiskFilter: RiskFilter) => {
