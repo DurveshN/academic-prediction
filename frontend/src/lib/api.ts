@@ -101,8 +101,8 @@ type ApiRequestOptions = Omit<RequestInit, 'body'> & {
   skipAuthRedirect?: boolean
 }
 
-const env = import.meta.env as ImportMetaEnv & { VITE_API_URL?: string }
-const API_BASE_URL = env.VITE_API_URL ?? 'http://localhost:8000'
+const env = import.meta.env as ImportMetaEnv & { VITE_API_BASE_URL?: string }
+const API_BASE_URL = env.VITE_API_BASE_URL ?? 'http://localhost:8000'
 
 export class ApiError extends Error {
   status: number
