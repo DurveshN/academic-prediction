@@ -14,6 +14,9 @@ from app.models.student import Student
 from app.models.user import User
 
 
+from app.auth.security import get_password_hash
+
+
 async def init_db():
     async with async_engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
@@ -54,7 +57,7 @@ async def seed_data(session: AsyncSession):
 
     admin_user = User(
         email="admin@example.com",
-        hashed_password="$2b$12$K0ByB.6YI2/OYrB4fQOYLe6QdRg6XnYlYqYqYqYqYqYqYqYqYqYqYq",
+        hashed_password=get_password_hash("admin"),
         role="admin",
     )
     session.add(admin_user)

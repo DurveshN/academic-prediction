@@ -207,7 +207,7 @@ Wave FINAL (After ALL tasks — Verification):
 
 ## TODOs
 
-- [ ] 1. Initialize Git Repository and Project Structure
+- [x] 1. Initialize Git Repository and Project Structure
 
   **What to do**:
   - Run `git init` in workspace root.
@@ -258,7 +258,7 @@ Wave FINAL (After ALL tasks — Verification):
   - **Happy Path**: Run `ls` → all directories exist. Run `git log` → initial commit present.
   - **Evidence**: `.sisyphus/evidence/task-1-project-structure.png` (screenshot of directory tree)
 
-- [ ] 2. Scaffold Vite + React + TypeScript Frontend
+- [x] 2. Scaffold Vite + React + TypeScript Frontend
 
   **What to do**:
   - Run `npm create vite@latest frontend -- --template react-ts`.
@@ -295,7 +295,7 @@ Wave FINAL (After ALL tasks — Verification):
   - **Happy Path**: `curl http://localhost:5173` → returns HTML with root div.
   - **Evidence**: `.sisyphus/evidence/task-2-vite-build.png` (build output screenshot)
 
-- [ ] 3. Scaffold FastAPI + Python Backend
+- [x] 3. Scaffold FastAPI + Python Backend
 
   **What to do**:
   - Create Python virtual environment (`python -m venv venv`).
@@ -333,7 +333,7 @@ Wave FINAL (After ALL tasks — Verification):
   - **Happy Path**: `curl http://localhost:8000/health` → `{"status":"ok"}`
   - **Evidence**: `.sisyphus/evidence/task-3-fastapi-health.json`
 
-- [ ] 4. Set Up Docker and Docker Compose for Local Development
+- [x] 4. Set Up Docker and Docker Compose for Local Development
 
   **What to do**:
   - Create `backend/Dockerfile` (Python 3.11 slim, multi-stage build if possible).
@@ -372,7 +372,7 @@ Wave FINAL (After ALL tasks — Verification):
   - **Happy Path**: `docker-compose ps` → 3 services up.
   - **Evidence**: `.sisyphus/evidence/task-4-docker-compose.png`
 
-- [ ] 5. Initialize PostgreSQL Schema and SQLAlchemy Models
+- [x] 5. Initialize PostgreSQL Schema and SQLAlchemy Models
 
   **What to do**:
   - Define SQLAlchemy models:
@@ -439,7 +439,7 @@ Wave FINAL (After ALL tasks — Verification):
   - **Happy Path**: `docker-compose exec db psql -U postgres -c "SELECT COUNT(*) FROM students"` → non-zero count.
   - **Evidence**: `.sisyphus/evidence/task-5-5-seeding.txt`
 
-- [ ] 6. Implement JWT Authentication Module
+- [x] 6. Implement JWT Authentication Module
 
   **What to do**:
   - Create `backend/app/auth/` module with:
@@ -478,7 +478,7 @@ Wave FINAL (After ALL tasks — Verification):
   - **Failure**: Same request without credentials → no cookie set, 401 response.
   - **Evidence**: `.sisyphus/evidence/task-6-auth-login-headers.txt`, `.sisyphus/evidence/task-6-auth-fail.json`
 
-- [ ] 7. Create Synthetic Dataset Generator
+- [x] 7. Create Synthetic Dataset Generator
 
   **What to do**:
   - Create `data/generate_synthetic.py` that generates:
