@@ -27,8 +27,21 @@ router = APIRouter(prefix="/predictions", tags=["predictions"])
 limiter = Limiter(key_func=get_remote_address)
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
-MODELS_DIR = PROJECT_ROOT / "backend" / "models"
-PROCESSED_DATA_DIR = PROJECT_ROOT / "data" / "processed"
+APP_ROOT = Path(__file__).resolve().parents[2]  # /app in Docker, backend/ locally
+
+# Models: try Docker path first (/app/models/), fall back to local dev path
+if (APP_ROOT / "models").exists():
+    MODELS_DIR = APP_ROOT / "models"
+else:
+    MODELS_DIR = PROJECT_ROOT / "backend" / "models"
+
+# Processed data: try Docker path first (/data/processed/), fall back to local dev path
+if Path("/data/processed").exists():
+    PROCESSED_DATA_DIR = Path("/data/processed")
+elif (PROJECT_ROOT / "data" / "processed").exists():
+    PROCESSED_DATA_DIR = PROJECT_ROOT / "data" / "processed"
+else:
+    PROCESSED_DATA_DIR = PROJECT_ROOT / "data" / "processed"
 
 _feature_cache: dict[str, np.ndarray] = {}
 
