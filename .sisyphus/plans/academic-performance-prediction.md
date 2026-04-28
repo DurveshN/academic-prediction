@@ -966,7 +966,7 @@ Wave FINAL (After ALL tasks — Verification):
   - **Latency**: Time request with `time curl ...` → <2s.
   - **Evidence**: `.sisyphus/evidence/task-17-predict-response.json`, `.sisyphus/evidence/task-17-latency.txt`, `.sisyphus/evidence/task-17-rate-limit.json`
 
-- [ ] 18. Build Cohort Aggregation Endpoint (`GET /cohort`)
+- [x] 18. Build Cohort Aggregation Endpoint (`GET /cohort`)
 
   **What to do**:
   - Create `backend/app/api/cohorts.py`:
@@ -1004,7 +1004,7 @@ Wave FINAL (After ALL tasks — Verification):
   - **Happy Path**: `curl http://localhost:8000/cohort/1 -H "Authorization: Bearer $TOKEN"` → JSON with `students` array.
   - **Evidence**: `.sisyphus/evidence/task-18-cohort-response.json`
 
-- [ ] 19. Build Health Check and Model Info Endpoints
+- [x] 19. Build Health Check and Model Info Endpoints
 
   **What to do**:
   - Extend `backend/app/api/health.py`:
@@ -1030,7 +1030,7 @@ Wave FINAL (After ALL tasks — Verification):
   - **Happy Path**: `curl http://localhost:8000/health` → `{"db": "ok", "models": "ok", "memory_mb": 512}`.
   - **Evidence**: `.sisyphus/evidence/task-19-health.json`
 
-- [ ] 20. Implement In-Memory Embedding Cache
+- [x] 20. Implement In-Memory Embedding Cache
 
   **What to do**:
   - Create `backend/app/core/cache.py`:

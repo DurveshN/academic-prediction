@@ -1,0 +1,60 @@
+{
+  "cohort_id": 1,
+  "cohort_name": "Test Cohort",
+  "total_students": 5,
+  "at_risk_count": 3,
+  "at_risk_percentage": 60.0,
+  "risk_distribution": {
+    "low": 1,
+    "medium": 1,
+    "high": 2
+  },
+  "average_modality_scores": {
+    "text": 0.575,
+    "tabular": 0.575,
+    "behavioral": 0.525
+  },
+  "students": [
+    {
+      "id": 1,
+      "name": "Student 0",
+      "risk_probability": 0.85,
+      "risk_level": "high",
+      "last_prediction_date": "2026-04-28T20:15:30"
+    },
+    {
+      "id": 2,
+      "name": "Student 1",
+      "risk_probability": 0.55,
+      "risk_level": "medium",
+      "last_prediction_date": "2026-04-28T20:15:30"
+    },
+    {
+      "id": 3,
+      "name": "Student 2",
+      "risk_probability": 0.2,
+      "risk_level": "low",
+      "last_prediction_date": "2026-04-28T20:15:30"
+    },
+    {
+      "id": 4,
+      "name": "Student 3",
+      "risk_probability": null,
+      "risk_level": null,
+      "last_prediction_date": null
+    },
+    {
+      "id": 5,
+      "name": "Student 4",
+      "risk_probability": 0.75,
+      "risk_level": "high",
+      "last_prediction_date": "2026-04-28T20:15:30"
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "limit": 50,
+    "total_pages": 1,
+    "total_students": 5
+  }
+}

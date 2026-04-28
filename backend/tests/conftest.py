@@ -9,6 +9,9 @@ from app.main import app
 from app.db.base import Base
 from app.db.session import get_db
 from app.models.user import User
+from app.models.cohort import Cohort
+from app.models.student import Student
+from app.models.prediction import Prediction
 from app.auth.security import get_password_hash
 
 TEST_DATABASE_URL = "sqlite+aiosqlite:///:memory:"
@@ -55,6 +58,9 @@ async def db_engine():
 async def db_session(db_engine):
     async with TestAsyncSessionLocal() as session:
         yield session
+        await session.execute(delete(Prediction))
+        await session.execute(delete(Student))
+        await session.execute(delete(Cohort))
         await session.execute(delete(User))
         await session.commit()
 

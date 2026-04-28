@@ -11,6 +11,7 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.auth.dependencies import get_current_user
+from app.core.cache import get_embedding_cache
 from app.db.session import get_db
 from app.explainability.service import ExplainabilityService
 from app.models.behavioral_model import BehavioralPredictor
@@ -40,12 +41,23 @@ def _get_cached_array(path: Path) -> np.ndarray:
 
 
 def _get_feature_by_student_id(student_id: int, features_path: Path, student_ids_path: Path) -> Optional[np.ndarray]:
+    cache = get_embedding_cache()
+    feature_type = features_path.stem
+    feature_index = hash(feature_type) % 100000
+    composite_key = student_id * 100000 + feature_index
+
+    cached = cache.get(composite_key)
+    if cached is not None:
+        return cached
+
     features = _get_cached_array(features_path)
     student_ids = _get_cached_array(student_ids_path)
     idx = np.where(student_ids == student_id)[0]
     if len(idx) == 0:
         return None
-    return features[idx[0]]
+    result = features[idx[0]]
+    cache.set(composite_key, result)
+    return result
 
 
 class PredictionService:

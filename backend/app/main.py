@@ -8,6 +8,8 @@ from app.auth.dependencies import get_current_user
 from app.models.user import User
 from app.api import register_stubs
 from app.api.predictions import router as predictions_router, limiter
+from app.api.cohorts import router as cohorts_router
+from app.api.health import router as health_router
 
 app = FastAPI(
     title="Academic Performance Prediction System",
@@ -28,14 +30,11 @@ app.add_middleware(
 
 app.include_router(auth_router, prefix="/auth", tags=["auth"])
 app.include_router(predictions_router)
+app.include_router(cohorts_router)
+app.include_router(health_router)
 
 # Stubs are registered only in non-production environments for frontend development
 register_stubs(app)
-
-
-@app.get("/health")
-async def health_check():
-    return {"status": "ok"}
 
 
 @app.get("/protected")
