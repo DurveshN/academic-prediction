@@ -17,7 +17,14 @@ logger = logging.getLogger(__name__)
 router = APIRouter(tags=["health"])
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
-MODELS_DIR = PROJECT_ROOT / "backend" / "models"
+APP_ROOT = Path(__file__).resolve().parents[2]  # /app in Docker, backend/ locally
+
+# Try Docker path first (/app/models/), fall back to local dev path
+if (APP_ROOT / "models").exists():
+    MODELS_DIR = APP_ROOT / "models"
+else:
+    MODELS_DIR = PROJECT_ROOT / "backend" / "models"
+
 EVIDENCE_DIR = PROJECT_ROOT / ".sisyphus" / "evidence"
 
 MODEL_FILES = {
