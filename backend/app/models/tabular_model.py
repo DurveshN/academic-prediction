@@ -15,6 +15,7 @@ from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_sc
 from sklearn.model_selection import train_test_split
 from xgboost import XGBClassifier
 
+from app.core.mlflow import end_run, log_metrics, log_model, log_params, start_run
 from app.preprocessing.tabular_processor import engineer_features, load_tabular_data
 
 matplotlib.use("Agg")
@@ -205,6 +206,17 @@ def train_tabular_model(
     negatives = int(np.sum(y_train == 0))
     scale_pos_weight = negatives / positives if positives else 1.0
 
+    start_run(experiment_name="tabular_model", run_name=f"tabular_model_{datetime.now().strftime('%Y%m%d_%H%M%S')}")
+    log_params({
+        "val_size": val_size,
+        "random_state": random_state,
+        "feature_count": len(feature_names),
+        "train_size": int(len(x_train)),
+        "validation_size": int(len(x_val)),
+        "positive_rate": float(labels.mean()),
+        "scale_pos_weight": float(scale_pos_weight),
+    })
+
     logger.info("Training XGBoost classifier with scale_pos_weight=%.4f", scale_pos_weight)
     tabular_model = TabularModel(scale_pos_weight=scale_pos_weight, random_state=random_state)
     tabular_model.fit(x_train, y_train)
@@ -229,6 +241,15 @@ def train_tabular_model(
     predictor.predict(inference_probe)
     single_inference_ms = (time.perf_counter() - single_start) * 1000
     training_time_seconds = time.perf_counter() - started_at
+
+    log_metrics({
+        **{f"train_{k}": v for k, v in train_metrics.items()},
+        **{f"val_{k}": v for k, v in validation_metrics.items()},
+        "training_time_seconds": float(training_time_seconds),
+        "single_inference_ms": float(single_inference_ms),
+    })
+    log_model(str(model_path), artifact_path="model")
+    end_run()
 
     result = {
         "train_metrics": train_metrics,

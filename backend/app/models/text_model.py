@@ -12,6 +12,8 @@ from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_sc
 from sklearn.model_selection import train_test_split
 from torch.utils.data import DataLoader, Dataset
 
+from app.core.mlflow import end_run, log_metrics, log_model, log_params, start_run
+
 logger = logging.getLogger(__name__)
 
 DEFAULT_EMBEDDINGS_PATH = os.path.join("..", "data", "processed", "text_features.npy")
@@ -198,6 +200,19 @@ def train_text_model(
     best_state = None
     history = []
 
+    start_run(experiment_name="text_model", run_name=f"text_model_{datetime.now().strftime('%Y%m%d_%H%M%S')}")
+    log_params({
+        "epochs": epochs,
+        "batch_size": batch_size,
+        "lr": lr,
+        "val_size": val_size,
+        "random_state": random_state,
+        "input_dim": embeddings.shape[1],
+        "train_size": len(X_train),
+        "val_size": len(X_val),
+        "positive_ratio": float(labels.mean()),
+    })
+
     logger.info(f"Starting training for {epochs} epochs...")
     for epoch in range(1, epochs + 1):
         model.train()
@@ -264,6 +279,19 @@ def train_text_model(
             import shutil
             shutil.copy2(model_path, symlink_path)
             logger.info(f"Copied model to {symlink_path} (symlink not supported)")
+
+    if best_state is not None:
+        log_metrics({
+            "best_val_f1": best_f1,
+            "best_val_accuracy": best_state["val_metrics"]["accuracy"],
+            "best_val_precision": best_state["val_metrics"]["precision"],
+            "best_val_recall": best_state["val_metrics"]["recall"],
+            "best_val_roc_auc": best_state["val_metrics"]["roc_auc"],
+            "best_epoch": best_state["epoch"],
+        })
+        log_model(model_path, artifact_path="model")
+
+    end_run()
 
     return {
         "best_val_f1": best_f1,

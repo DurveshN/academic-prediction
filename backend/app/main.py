@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.auth import router as auth_router
 from app.auth.dependencies import get_current_user
 from app.models.user import User
+from app.api import register_stubs
 
 app = FastAPI(
     title="Academic Performance Prediction System",
@@ -20,6 +21,9 @@ app.add_middleware(
 )
 
 app.include_router(auth_router, prefix="/auth", tags=["auth"])
+
+# Stubs are registered only in non-production environments for frontend development
+register_stubs(app)
 
 
 @app.get("/health")

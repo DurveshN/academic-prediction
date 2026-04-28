@@ -1,0 +1,35 @@
+MLflow UI Verification Evidence
+================================
+
+Date: 2026-04-28
+Task: 16 - Set Up MLflow Experiment Tracking
+
+Verification Steps:
+1. MLflow UI server started successfully with command:
+   mlflow ui --backend-store-uri sqlite:///backend/mlflow.db --default-artifact-root backend/mlruns --port 5000
+
+2. Server output confirmed:
+   - Uvicorn running on http://127.0.0.1:5000
+   - Application startup complete
+   - Security middleware enabled (localhost-only)
+
+3. Files created/modified:
+   - backend/app/core/mlflow.py (helper functions: start_run, log_params, log_metrics, log_model, end_run, get_tracking_uri)
+   - backend/app/core/config.py (added MLFLOW_TRACKING_URI and MLFLOW_ARTIFACT_ROOT)
+   - backend/app/models/text_model.py (integrated MLflow logging)
+   - backend/app/models/tabular_model.py (integrated MLflow logging)
+   - backend/app/models/behavioral_model.py (integrated MLflow logging)
+   - backend/app/models/fusion_ensemble.py (integrated MLflow logging)
+   - docs/MLFLOW.md (usage instructions)
+
+4. Configuration:
+   - MLFLOW_TRACKING_URI: sqlite:///backend/mlflow.db
+   - MLFLOW_ARTIFACT_ROOT: backend/mlruns
+
+5. Experiments configured:
+   - text_model
+   - tabular_model
+   - behavioral_model
+   - fusion_ensemble
+
+Status: PASS

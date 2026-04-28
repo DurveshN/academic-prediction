@@ -1,0 +1,102 @@
+{
+  "model_path": "E:\\tai projects\\ibm\\backend\\models\\fusion_model_20260428_185807.json",
+  "latest_model_path": "E:\\tai projects\\ibm\\backend\\models\\fusion_model_latest.json",
+  "training_time_seconds": 0.17061249999096617,
+  "single_inference_ms": 0.7811000104993582,
+  "validation_metrics": {
+    "accuracy": 0.96,
+    "precision": 0.9302325581395349,
+    "recall": 0.9302325581395349,
+    "f1": 0.9302325581395349,
+    "roc_auc": 0.9873940447728755
+  },
+  "test_metrics": {
+    "accuracy": 0.98,
+    "precision": 0.9583333333333334,
+    "recall": 0.9787234042553191,
+    "f1": 0.968421052631579,
+    "roc_auc": 0.9966948977483991
+  },
+  "single_modality_metrics": {
+    "train": {
+      "text": {
+        "accuracy": 0.6642857142857143,
+        "precision": 0.46458923512747874,
+        "recall": 0.780952380952381,
+        "f1": 0.5825932504440497,
+        "roc_auc": 0.7455587949465501
+      },
+      "tabular": {
+        "accuracy": 0.9642857142857143,
+        "precision": 0.9223744292237442,
+        "recall": 0.9619047619047619,
+        "f1": 0.9417249417249417,
+        "roc_auc": 0.9950242954324586
+      },
+      "behavioral": {
+        "accuracy": 0.7842857142857143,
+        "precision": 0.5960912052117264,
+        "recall": 0.8714285714285714,
+        "f1": 0.7079303675048356,
+        "roc_auc": 0.8859863945578232
+      }
+    },
+    "validation": {
+      "text": {
+        "accuracy": 0.6,
+        "precision": 0.38666666666666666,
+        "recall": 0.6744186046511628,
+        "f1": 0.4915254237288136,
+        "roc_auc": 0.6502934144751141
+      },
+      "tabular": {
+        "accuracy": 0.9733333333333334,
+        "precision": 0.9333333333333333,
+        "recall": 0.9767441860465116,
+        "f1": 0.9545454545454546,
+        "roc_auc": 0.9863073244946751
+      },
+      "behavioral": {
+        "accuracy": 0.7733333333333333,
+        "precision": 0.576271186440678,
+        "recall": 0.7906976744186046,
+        "f1": 0.6666666666666666,
+        "roc_auc": 0.8869810910671594
+      }
+    },
+    "test": {
+      "text": {
+        "accuracy": 0.6,
+        "precision": 0.4155844155844156,
+        "recall": 0.6808510638297872,
+        "f1": 0.5161290322580645,
+        "roc_auc": 0.6756868415616608
+      },
+      "tabular": {
+        "accuracy": 0.9866666666666667,
+        "precision": 0.9787234042553191,
+        "recall": 0.9787234042553191,
+        "f1": 0.9787234042553191,
+        "roc_auc": 0.996281759966949
+      },
+      "behavioral": {
+        "accuracy": 0.7333333333333333,
+        "precision": 0.5454545454545454,
+        "recall": 0.8936170212765957,
+        "f1": 0.6774193548387096,
+        "roc_auc": 0.8675893410452385
+      }
+    }
+  },
+  "population_means": {
+    "text": 0.5008546113967896,
+    "tabular": 0.320676326751709,
+    "behavioral": 0.4216322898864746
+  },
+  "feature_importances": {
+    "text_prob": 0.05204753950238228,
+    "tabular_prob": 0.6932498812675476,
+    "behavioral_prob": 0.2547025978565216
+  },
+  "meta_learner_type": "xgboost"
+}

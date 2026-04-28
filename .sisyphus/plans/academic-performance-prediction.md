@@ -778,7 +778,7 @@ Wave FINAL (After ALL tasks — Verification):
   - **Happy Path**: `python -c "from app.models.behavioral_model import BehavioralPredictor; p=BehavioralPredictor(); print(p.predict(np.zeros((1,30,6))))"` → probability.
   - **Evidence**: `.sisyphus/evidence/task-13-behavioral-model-metrics.json`
 
-- [ ] 14. Implement Late Fusion Ensemble
+- [x] 14. Implement Late Fusion Ensemble
 
   **What to do**:
   - Build `backend/app/models/fusion_ensemble.py`:
@@ -857,7 +857,7 @@ Wave FINAL (After ALL tasks — Verification):
   - **Happy Path**: `curl -X POST http://localhost:8000/explain -d '{"student_id": 1}'` → returns JSON with `narrative_summary` containing natural language.
   - **Evidence**: `.sisyphus/evidence/task-15-explanation-example.json`
 
-- [ ] 16. Set Up MLflow Experiment Tracking
+- [x] 16. Set Up MLflow Experiment Tracking
 
   **What to do**:
   - Initialize MLflow in `backend/app/core/mlflow.py`:
@@ -889,7 +889,7 @@ Wave FINAL (After ALL tasks — Verification):
   - **Happy Path**: `mlflow ui` → accessible at `http://localhost:5000`, shows experiments.
   - **Evidence**: `.sisyphus/evidence/task-16-mlflow-ui.png`
 
-- [ ] 16.5. Create Stub API Endpoints for Frontend Development
+- [x] 16.5. Create Stub API Endpoints for Frontend Development
 
   **What to do**:
   - Create `backend/app/api/stubs.py` with mock endpoints that return realistic dummy data:
