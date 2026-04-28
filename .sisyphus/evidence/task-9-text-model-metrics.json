@@ -1,0 +1,18 @@
+{
+  "task": "text-model-training",
+  "best_val_f1": 0.6216,
+  "best_epoch": 7,
+  "model_path": "models/text_model_20260428_181931.pt",
+  "symlink_path": "models/text_model_latest.pt",
+  "architecture": "TextClassifier(768 -> 128 -> 1)",
+  "optimizer": "AdamW",
+  "lr": 0.0001,
+  "epochs_trained": 20,
+  "batch_size": 64,
+  "pos_weight": 2.333,
+  "random_state": 777,
+  "training_time_seconds": 3,
+  "inference_time_per_student_ms": 5,
+  "device": "cpu",
+  "torch_num_threads": 2
+}

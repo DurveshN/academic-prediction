@@ -1,0 +1,17 @@
+Task 12: Behavioral Preprocessing and Sequence Builder
+
+Command:
+- From backend/: . .\venv\Scripts\Activate.ps1; $env:PYTHONPATH='E:\tai projects\ibm\backend'; python -m app.preprocessing.behavioral_processor
+
+Observed output:
+- Behavioral sequences shape: (1000, 30, 6)
+- Behavioral student IDs shape: (1000,)
+
+Verification:
+- basedpyright on changed files: 0 errors, 0 warnings, 0 notes
+- pytest backend/tests/test_behavioral_processor.py: 6 passed
+
+Artifacts written:
+- data/processed/behavioral_sequences.npy
+- data/processed/behavioral_student_ids.npy
+- data/processed/behavioral_scaler.pkl

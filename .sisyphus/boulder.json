@@ -72,6 +72,15 @@
       "agent": "Sisyphus-Junior",
       "category": "deep",
       "updated_at": "2026-04-28T12:21:05.796Z"
+    },
+    "todo:9": {
+      "task_key": "todo:9",
+      "task_label": "9",
+      "task_title": "Train Text Model (Frozen DistilBERT + Lightweight Classifier Head)",
+      "session_id": "ses_22bf37710ffeUK77niX3EBHzwm",
+      "agent": "Sisyphus-Junior",
+      "category": "deep",
+      "updated_at": "2026-04-28T12:52:12.423Z"
     }
   }
 }

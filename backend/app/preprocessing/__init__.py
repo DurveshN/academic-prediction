@@ -1,11 +1,13 @@
-"""Text preprocessing and embedding pipeline."""
+# pyright: reportUnknownVariableType=false, reportUnknownMemberType=false
+
+"""Preprocessing pipelines for text and behavioral data."""
 
 from app.preprocessing.text_processor import (
-    load_texts,
     TextEmbeddingDataset,
     generate_embeddings,
     cache_embeddings,
     load_cached_embeddings,
+    load_texts,
     process_all_texts,
 )
 

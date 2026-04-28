@@ -585,7 +585,7 @@ Wave FINAL (After ALL tasks — Verification):
   - **Happy Path**: `python -c "import numpy as np; e=np.load('data/processed/text_features.npy'); print(e.shape)"` → valid shape.
   - **Evidence**: `.sisyphus/evidence/task-8-embedding-shape.txt`
 
-- [ ] 9. Train Text Model (Frozen DistilBERT + Lightweight Classifier Head)
+- [x] 9. Train Text Model (Frozen DistilBERT + Lightweight Classifier Head)
 
   **What to do**:
   - Build `backend/app/models/text_model.py`:
@@ -700,7 +700,7 @@ Wave FINAL (After ALL tasks — Verification):
   - **Happy Path**: `python -c "from app.models.tabular_model import TabularPredictor; p=TabularPredictor(); print(p.predict([[0.8, 75, 10, 3, 2.5, 1, 0, 0]]))"` → probability.
   - **Evidence**: `.sisyphus/evidence/task-11-tabular-model-metrics.json`
 
-- [ ] 12. Behavioral Preprocessing and Sequence Builder
+- [x] 12. Behavioral Preprocessing and Sequence Builder
 
   **What to do**:
   - Build `backend/app/preprocessing/behavioral_processor.py`:
