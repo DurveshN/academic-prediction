@@ -1482,7 +1482,7 @@ Wave FINAL (After ALL tasks — Verification):
   - **SSL**: `curl -v https://<domain>` → certificate valid.
   - **Evidence**: `.sisyphus/evidence/task-31-ssl-check.txt`
 
-- [ ] 32. Environment Configuration and Secrets Management
+- [x] 32. Environment Configuration and Secrets Management
 
   **What to do**:
   - Verify `backend/app/core/config.py` from Task 3 has all production settings:
