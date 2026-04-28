@@ -1168,7 +1168,7 @@ Wave FINAL (After ALL tasks — Verification):
   - **Happy Path**: Login → API request includes `Cookie: access_token=...` header automatically.
   - **Evidence**: `.sisyphus/evidence/task-23-api-cookies.png` (network tab screenshot)
 
-- [ ] 24. Build Admin Login Page
+- [x] 24. Build Admin Login Page
 
   **What to do**:
   - Create `src/pages/LoginPage.tsx`:
@@ -1201,7 +1201,7 @@ Wave FINAL (After ALL tasks — Verification):
   - **Failure**: Invalid password → assert error visible.
   - **Evidence**: `.sisyphus/evidence/task-24-login-flow.png`
 
-- [ ] 25. Build Cohort Overview Dashboard
+- [x] 25. Build Cohort Overview Dashboard
 
   **What to do**:
   - Create `src/pages/DashboardPage.tsx`:
@@ -1244,7 +1244,7 @@ Wave FINAL (After ALL tasks — Verification):
   - **Charts**: Assert Recharts SVGs present in DOM.
   - **Evidence**: `.sisyphus/evidence/task-25-dashboard.png`
 
-- [ ] 26. Build At-Risk Student Table with Explanations
+- [x] 26. Build At-Risk Student Table with Explanations
 
   **What to do**:
   - Extend dashboard table or create dedicated `src/pages/RiskTablePage.tsx`:
@@ -1277,7 +1277,7 @@ Wave FINAL (After ALL tasks — Verification):
   - **Explanation**: Expand row → assert explanation text length >50 chars.
   - **Evidence**: `.sisyphus/evidence/task-26-risk-table.png`
 
-- [ ] 27. Build Model Performance Dashboard
+- [x] 27. Build Model Performance Dashboard
 
   **What to do**:
   - Create `src/pages/ModelPage.tsx`:
