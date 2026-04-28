@@ -1439,7 +1439,7 @@ Wave FINAL (After ALL tasks — Verification):
   - **Happy Path**: `curl http://<elastic-ip>/health` → `{"status":"ok"}`.
   - **Evidence**: `.sisyphus/evidence/task-30-ec2-health.json`
 
-- [ ] 31. Configure Nginx Reverse Proxy + SSL (Let's Encrypt)
+- [x] 31. Configure Nginx Reverse Proxy + SSL (Let's Encrypt)
 
   **What to do**:
   - Write `docs/SSL_SETUP.md`:

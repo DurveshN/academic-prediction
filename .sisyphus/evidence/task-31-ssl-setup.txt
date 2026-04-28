@@ -1,0 +1,31 @@
+Task 31 Evidence - Nginx Reverse Proxy + SSL
+=============================================
+
+Date: 2026-04-28
+Status: COMPLETED
+
+Files Created/Modified:
+- docs/SSL_SETUP.md (new)
+- nginx/nginx.conf (updated from placeholder)
+
+Verification:
+- docs/SSL_SETUP.md contains:
+  * Nginx installation instructions
+  * Configuration steps with certbot
+  * SSL certificate setup with Let's Encrypt
+  * Auto-renewal configuration
+  * HTTPS verification commands
+  * Troubleshooting section
+
+- nginx/nginx.conf contains:
+  * Upstream backend at localhost:8000
+  * HTTP to HTTPS redirect
+  * SSL configuration with certbot paths
+  * Security headers (HSTS, X-Frame-Options, X-Content-Type-Options, Referrer-Policy)
+  * Gzip compression
+  * Static file serving from /var/www/html
+  * API proxy to backend
+  * Commented MLflow location with security warning
+
+No actual SSL certificates were created.
+No domain was registered.
