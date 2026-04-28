@@ -162,6 +162,42 @@
       "agent": "Sisyphus-Junior",
       "category": "quick",
       "updated_at": "2026-04-28T16:25:56.554Z"
+    },
+    "todo:29": {
+      "task_key": "todo:29",
+      "task_label": "29",
+      "task_title": "Create AWS Setup Guide and RDS PostgreSQL",
+      "session_id": "ses_22b08df1cffetYT8zo3IXIXHCS",
+      "agent": "Sisyphus-Junior",
+      "category": "writing",
+      "updated_at": "2026-04-28T16:47:40.601Z"
+    },
+    "todo:30": {
+      "task_key": "todo:30",
+      "task_label": "30",
+      "task_title": "Create EC2 Instance and Docker Deployment",
+      "session_id": "ses_22aff0c15ffeh877STEGLPbiHr",
+      "agent": "Sisyphus-Junior",
+      "category": "unspecified-high",
+      "updated_at": "2026-04-28T17:10:59.597Z"
+    },
+    "todo:31": {
+      "task_key": "todo:31",
+      "task_label": "31",
+      "task_title": "Configure Nginx Reverse Proxy + SSL (Let's Encrypt)",
+      "session_id": "ses_22aeb2708ffewgEMhvm9KQFP8M",
+      "agent": "Sisyphus-Junior",
+      "category": "unspecified-high",
+      "updated_at": "2026-04-28T17:43:27.822Z"
+    },
+    "todo:33": {
+      "task_key": "todo:33",
+      "task_label": "33",
+      "task_title": "End-to-End Integration Test on AWS",
+      "session_id": "ses_22a84650effeo07D59q3KNmbVc",
+      "agent": "Sisyphus-Junior",
+      "category": "unspecified-high",
+      "updated_at": "2026-04-28T19:14:35.314Z"
     }
   }
 }

@@ -28,6 +28,12 @@ async def test_health_check_returns_200_with_required_fields(health_client):
     assert "memory_mb" in data
     assert isinstance(data["memory_mb"], int)
     assert data["memory_mb"] > 0
+    assert "cpu_percent" in data
+    assert "memory_percent" in data
+    assert "disk_percent" in data
+    assert isinstance(data["cpu_percent"], float)
+    assert isinstance(data["memory_percent"], float)
+    assert isinstance(data["disk_percent"], float)
 
 
 @pytest.mark.asyncio

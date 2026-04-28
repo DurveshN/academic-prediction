@@ -20,7 +20,10 @@ from app.middleware.error_handler import (
     authentication_error_handler,
     generic_exception_handler,
 )
+from app.core.logging_config import setup_logging
 from app.middleware.logging_middleware import LoggingMiddleware
+
+setup_logging()
 
 app = FastAPI(
     title="Academic Performance Prediction System",

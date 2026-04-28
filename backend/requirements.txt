@@ -25,3 +25,4 @@ numpy
 shap
 mlflow
 python-dotenv
+python-json-logger>=2.0.0

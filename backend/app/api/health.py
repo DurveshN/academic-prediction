@@ -56,6 +56,14 @@ def _get_memory_usage_mb() -> int:
     return int(process.memory_info().rss / (1024 * 1024))
 
 
+def _get_system_metrics() -> dict[str, float]:
+    return {
+        "cpu_percent": round(psutil.cpu_percent(interval=0.1), 2),
+        "memory_percent": round(psutil.virtual_memory().percent, 2),
+        "disk_percent": round(psutil.disk_usage("/").percent, 2),
+    }
+
+
 def _read_evidence(model_name: str) -> dict[str, Any]:
     path = EVIDENCE_FILES.get(model_name)
     if path is None or not path.exists():
@@ -129,12 +137,14 @@ async def health_check() -> dict[str, Any]:
     model_status = _check_model_files()
     models_ok = all(model_status.values())
     memory_mb = _get_memory_usage_mb()
+    system_metrics = _get_system_metrics()
 
     return {
         "status": "ok" if db_ok and models_ok else "degraded",
         "db": "ok" if db_ok else "error",
         "models": "ok" if models_ok else "error",
         "memory_mb": memory_mb,
+        **system_metrics,
     }
 
 
