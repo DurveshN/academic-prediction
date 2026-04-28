@@ -9,6 +9,8 @@ class Settings(BaseSettings):
     JWT_ACCESS_TOKEN_EXPIRE_MINUTES: int = Field(default=30)
     MLFLOW_TRACKING_URI: str = Field(default="http://localhost:5000")
     ENVIRONMENT: str = Field(default="local")
+    TEXT_MODEL: str = Field(default="distilbert-base-uncased")
+    USE_MINILM_FALLBACK: bool = Field(default=False)
 
     class Config:
         env_file = ".env"

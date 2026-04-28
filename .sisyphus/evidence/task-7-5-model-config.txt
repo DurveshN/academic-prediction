@@ -1,0 +1,64 @@
+Task 7.5: Model Fallback Configuration Implementation Evidence
+=============================================================
+
+Date: 2026-04-28
+Status: COMPLETED
+
+Files Created/Modified:
+-----------------------
+1. backend/app/core/model_config.py (NEW)
+   - TEXT_MODEL env var support (default: "distilbert-base-uncased")
+   - USE_MINILM_FALLBACK env var support (default: False)
+   - get_text_encoder() function returning (model, tokenizer) tuple
+   - Support for both DistilBERT and MiniLM models
+   - Error handling for model loading failures
+
+2. backend/app/core/config.py (MODIFIED)
+   - Added TEXT_MODEL: str = Field(default="distilbert-base-uncased")
+   - Added USE_MINILM_FALLBACK: bool = Field(default=False)
+
+3. backend/tests/test_model_config.py (NEW)
+   - 15 tests covering all functionality
+   - Mock-based tests (no model downloads during testing)
+   - Tests for default config, fallback config, env var parsing
+
+4. docs/MODEL_FALLBACK.md (NEW)
+   - When to use fallback documentation
+   - Performance comparison table
+   - Switching instructions
+   - Accuracy impact assessment
+
+Test Results:
+-------------
+pytest backend/tests/test_model_config.py -v
+
+backend\tests\test_model_config.py::TestGetTextModelName::test_default_returns_distilbert PASSED
+backend\tests\test_model_config.py::TestGetTextModelName::test_text_model_env_var PASSED
+backend\tests\test_model_config.py::TestGetTextModelName::test_minilm_short_name_normalized PASSED
+backend\tests\test_model_config.py::TestGetTextModelName::test_fallback_flag_true PASSED
+backend\tests\test_model_config.py::TestGetTextModelName::test_fallback_flag_one PASSED
+backend\tests\test_model_config.py::TestGetTextModelName::test_fallback_flag_yes PASSED
+backend\tests\test_model_config.py::TestGetTextModelName::test_text_model_overrides_fallback PASSED
+backend\tests\test_model_config.py::TestGetModelMetadata::test_distilbert_metadata PASSED
+backend\tests\test_model_config.py::TestGetModelMetadata::test_minilm_metadata PASSED
+backend\tests\test_model_config.py::TestGetModelMetadata::test_unknown_model_defaults PASSED
+backend\tests\test_model_config.py::TestGetTextEncoder::test_returns_model_and_tokenizer PASSED
+backend\tests\test_model_config.py::TestGetTextEncoder::test_loads_minilm_when_configured PASSED
+backend\tests\test_model_config.py::TestGetTextEncoder::test_raises_on_load_failure PASSED
+backend\tests\test_model_config.py::TestGetTextModelConfig::test_default_config PASSED
+backend\tests\test_model_config.py::TestGetTextModelConfig::test_fallback_config PASSED
+
+======================== 15 passed, 1 warning in 23.58s ========================
+
+Verification:
+-------------
+Command: python -c "from app.core.model_config import get_text_encoder; m,t=get_text_encoder(); print(m.config.hidden_size)"
+Output: 768
+
+This confirms DistilBERT is loaded with 768-dimensional hidden size.
+
+Model Support:
+--------------
+- TEXT_MODEL=distilbert-base-uncased -> DistilBERT (768-dim, ~250MB)
+- TEXT_MODEL=all-MiniLM-L6-v2 -> MiniLM (384-dim, ~50MB)
+- USE_MINILM_FALLBACK=true -> MiniLM (384-dim, ~50MB)

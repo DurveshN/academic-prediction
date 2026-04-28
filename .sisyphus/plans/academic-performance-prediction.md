@@ -515,7 +515,7 @@ Wave FINAL (After ALL tasks — Verification):
   - **Happy Path**: `python data/generate_synthetic.py && ls data/raw/` → all 3 files exist, non-empty.
   - **Evidence**: `.sisyphus/evidence/task-7-dataset-sizes.txt`
 
-- [ ] 7.5. Implement Model Fallback Configuration
+- [x] 7.5. Implement Model Fallback Configuration
 
   **What to do**:
   - Create `backend/app/core/model_config.py`:

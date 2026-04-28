@@ -43,3 +43,45 @@
 - Duration and event count both inversely correlate with risk score
 - Script runs in ~5 seconds on CPU
 
+
+## Task 5.5: Database Seeding Script
+
+### Completed
+- Created backend/scripts/seed_db.py to load synthetic data from data/raw/students.csv
+- Script extracts unique cohorts and inserts them idempotently into `cohorts` table
+- Script inserts students idempotently into `students` table (checks by name + cohort_id)
+- Supports --limit flag (default 100) and --all flag for development vs full seeding
+- Refuses to run in production environment (ENVIRONMENT == "production")
+- Handles missing CSV file gracefully with warning message
+- Created backend/tests/test_seed.py with 4 tests covering execution, idempotency, record creation, and limit respect
+- Updated docker-compose.yml to run seed script on backend startup
+- Updated backend/Dockerfile to copy scripts/ directory into container
+- All 9 backend tests pass (5 auth + 4 seed)
+- Evidence saved to .sisyphus/evidence/task-5.5-seed-summary.txt
+
+### Notes
+- Made seed_db() accept optional `session` parameter for testability with in-memory SQLite
+- Idempotency achieved by querying for existing records before insertion
+- Cohort names generated as "Cohort {cohort_id}" from CSV integer IDs
+- Student demographics JSON includes age, gender, socioeconomic_status, prior_gpa from CSV
+- Tests clean up Student/Cohort tables when testing specific counts to avoid cross-test contamination
+- The conftest.py db_session fixture only cleans up Users table after each test
+
+
+## Task 7.5: Model Fallback Configuration
+
+### Completed
+- Created backend/app/core/model_config.py with environment-based model selection
+- Added TEXT_MODEL and USE_MINILM_FALLBACK to backend/app/core/config.py (Pydantic BaseSettings)
+- Created backend/tests/test_model_config.py with 15 tests (all passing)
+- Created docs/MODEL_FALLBACK.md with usage guide and performance comparison
+- Verified DistilBERT loads with 768 hidden size
+- Evidence saved to .sisyphus/evidence/task-7-5-model-config.txt
+
+### Notes
+- get_text_encoder() uses transformers.AutoModel and AutoTokenizer for loading
+- Model name normalization: "all-MiniLM-L6-v2" short name maps to full "sentence-transformers/all-MiniLM-L6-v2"
+- Priority: TEXT_MODEL env var > USE_MINILM_FALLBACK flag > default (distilbert-base-uncased)
+- Tests mock AutoModel and AutoTokenizer to avoid downloading weights during test runs
+- RuntimeError raised with descriptive message if model loading fails
+- get_text_model_config() returns dict with model metadata for debugging/monitoring

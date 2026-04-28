@@ -42,6 +42,7 @@ USER appuser
 
 # Copy application code
 COPY --chown=appuser:appuser app/ ./app/
+COPY --chown=appuser:appuser scripts/ ./scripts/
 COPY --chown=appuser:appuser alembic/ ./alembic/ 2>/dev/null || true
 COPY --chown=appuser:appuser alembic.ini . 2>/dev/null || true
 
